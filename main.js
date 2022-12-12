@@ -24,8 +24,10 @@ function garbage_alert() {
   details = range.getValue();
 
   // メッセージ生成
-  const today = Utilities.formatDate(new Date(), 'JST', 'yyyy年M月d日(明日)');
-  let msg = '\n' + today + 'のゴミ出しは\n';
+  let nextday = new Date();
+  nextday.setDate(nextday.getDate() + 1);
+  const format = Utilities.formatDate(nextday, 'JST', 'yyyy年M月d日(明日)');
+  let msg = '\n' + format + 'のゴミ出しは\n';
   if (details === '') { msg += '「特にありません」'; }
   else { msg += '「' + details + '」です。'; }
 
